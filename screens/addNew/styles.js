@@ -9,12 +9,12 @@ export default StyleSheet.create({
     paddingHorizontal: 40,
   },
   time: {
-    fontSize: 30,
+    fontSize: 70,
     textAlign: "center",
     marginBottom: 40,
   },
   addButton: {
-    backgroundColor: colors.blue,
+    backgroundColor: colors.green,
     borderRadius: 4000,
     padding: 20,
     rippleEffect: "rgb(255, 255, 255, 1)",
