@@ -1,14 +1,13 @@
 import { StyleSheet } from "react-native";
 
-export const circleRadius = 150;
+export const containerWidth = 340;
 
 export default StyleSheet.create({
-    container: {
-        width: circleRadius * 2,
-        aspectRatio: 1,
-        backgroundColor: 'red',
-        marginBottom: 20,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
+  container: {
+    width: containerWidth,
+    aspectRatio: 1,
+    marginBottom: 40,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 });
