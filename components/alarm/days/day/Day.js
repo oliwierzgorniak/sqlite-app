@@ -6,7 +6,7 @@ import getDayNameFromIndex from "./js/getDayNameFromIndex";
 
 import styles from "./styles";
 import colors from "../../../../styles/colors";
-import { rippleEffect } from "../../../../global";
+import { rippleEffect } from "../../../../js/global";
 
 export default ({ alarmId, dayIndex }) => {
   const dispatch = useDispatch();

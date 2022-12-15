@@ -1,22 +1,43 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  TouchableNativeFeedback,
+} from "react-native";
 
+import { useSelector } from "react-redux";
 import handleButton from "./js/handleButton";
-import {hoursAm} from '../../global';
 
 import styles from "./styles";
 import PlusSvg from "../../assets/plus-white.svg";
-import HoursSelection from "../../components/hoursSelection/HoursSelection";
+import TimeSelection from "../../components/timeSelection/TimeSelection";
+import { rippleEffect } from "../../js/global";
+import handlePressHours from "./js/handlePressHours";
+import handlePressMinutes from "./js/handlePressMinutes";
 
 export default ({ navigation }) => {
+  const { hours, minutes } = useSelector((state) => state.timeSelection.value);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.time}>
-        00 : 00
-      </Text>
-      <HoursSelection />
+      <View style={styles.timeContainer}>
+        <TouchableNativeFeedback
+          onPress={handlePressHours}
+          background={rippleEffect}
+        >
+          <Text style={styles.time}>{hours}</Text>
+        </TouchableNativeFeedback>
+        <Text style={styles.time}>:</Text>
+        <TouchableNativeFeedback
+          onPress={handlePressMinutes}
+          background={rippleEffect}
+        >
+          <Text style={styles.time}>{minutes}</Text>
+        </TouchableNativeFeedback>
+      </View>
+      <TimeSelection />
       <TouchableOpacity
-        onPress={() => handleButton("00:00", navigation.goBack)}
+        onPress={() => handleButton(`${hours}:${minutes}`, navigation.goBack)}
         style={styles.addButton}
       >
         <PlusSvg width={styles.icon.width} height={styles.icon.height} />

@@ -8,10 +8,14 @@ export default StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 40,
   },
+  timeContainer: {
+    marginBottom: 40,
+    flexDirection: "row",
+  },
+  timeButton: {},
   time: {
     fontSize: 70,
     textAlign: "center",
-    marginBottom: 40,
   },
   addButton: {
     backgroundColor: colors.green,
