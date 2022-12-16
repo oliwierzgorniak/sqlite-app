@@ -1,4 +1,5 @@
-import { createSlice, nanoid } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
+import get2DigitString from "../../js/get2DigitString";
 
 const timeSelectionSlice = createSlice({
   name: "timeSeclection",
@@ -47,10 +48,6 @@ const timeSelectionSlice = createSlice({
     },
   },
 });
-
-function get2DigitString(s) {
-  return s.length < 2 ? "0" + s : s;
-}
 
 export const {
   setHours,

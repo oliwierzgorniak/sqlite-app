@@ -1,6 +1,5 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { View, ScrollView } from "react-native";
-import { Animated } from "react-native-maps";
 
 import { useSelector } from "react-redux";
 
