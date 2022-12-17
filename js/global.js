@@ -1,6 +1,6 @@
 import { TouchableNativeFeedback } from "react-native";
 export const rippleEffect = TouchableNativeFeedback.Ripple(
-  "rgba(255,255,255,1)",
+  "rgba(200,200,200,1)",
   true
 );
 

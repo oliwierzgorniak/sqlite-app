@@ -7,12 +7,15 @@ export default StyleSheet.create({
     marginTop: 10,
     marginBottom: 5,
   },
-  deleteIcon: {
-    width: 25,
-    height: 25,
+  leftButtonsContainer: {
+    flexDirection: "row",
   },
-  daysToggleIcon: {
+  icon: {
     width: 25,
     height: 25,
+    marginRight: 5,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 15,
   },
 });

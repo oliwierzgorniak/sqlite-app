@@ -4,6 +4,7 @@ import {
   toggleCollapseInAlarm,
   toggleCollapseForStylesInAlarm,
   toggleIsToggleButtonBlocked,
+  toggleValue,
 } from "../../../../redux/reducers/alarmsReducer";
 
 export default function handleToggleDays(height, alarmId) {
@@ -14,23 +15,25 @@ export default function handleToggleDays(height, alarmId) {
   );
 
   if (isToggleButtonBlocked) return;
-  store.dispatch(toggleIsToggleButtonBlocked(alarmId));
+  store.dispatch(toggleValue(alarmId, "isToggleButtonBlocked"));
 
   if (isCollapsed) {
     Animated.spring(height, {
       toValue: 50,
       useNativeDriver: false,
-    }).start(() => store.dispatch(toggleIsToggleButtonBlocked(alarmId)));
-    store.dispatch(toggleCollapseInAlarm(alarmId));
-    store.dispatch(toggleCollapseForStylesInAlarm(alarmId));
+    }).start(() =>
+      store.dispatch(toggleValue(alarmId, "isToggleButtonBlocked"))
+    );
+    store.dispatch(toggleValue(alarmId, "isCollapsed"));
+    store.dispatch(toggleValue(alarmId, "isCollapsedForStyles"));
   } else {
-    store.dispatch(toggleCollapseForStylesInAlarm(alarmId));
+    store.dispatch(toggleValue(alarmId, "isCollapsedForStyles"));
     Animated.spring(height, {
       toValue: 2,
       useNativeDriver: false,
     }).start(() => {
-      store.dispatch(toggleIsToggleButtonBlocked(alarmId));
-      store.dispatch(toggleCollapseInAlarm(alarmId));
+      store.dispatch(toggleValue(alarmId, "isToggleButtonBlocked"));
+      store.dispatch(toggleValue(alarmId, "isCollapsed"));
     });
   }
 }

@@ -1,5 +1,5 @@
 import * as SQLite from "expo-sqlite";
-const db = SQLite.openDatabase("./zgorniak_oliwier_4I1B.db");
+const db = SQLite.openDatabase("./zgorniak_oliwier_4i1b.db");
 
 async function queryDb(query) {
   return new Promise((resolve, reject) => {
@@ -17,7 +17,7 @@ async function queryDb(query) {
 export default class Database {
   static async createTable() {
     const query =
-      "CREATE TABLE IF NOT EXISTS alarms (id integer primary key not null, time text, isEnabled integer);";
+      "CREATE TABLE IF NOT EXISTS alarms (id integer primary key not null, time text, isEnabled integer, isMusicEnabled integer, areVibrations integer);";
     await queryDb(query);
   }
 
@@ -37,11 +37,14 @@ export default class Database {
     await queryDb(query);
   }
 
-  static async update(modifiedAlarm) {
-    const id = modifiedAlarm.id;
-    const time = modifiedAlarm.time;
-    const isEnabled = modifiedAlarm.isEnabled;
-    const query = `UPDATE alarms SET time = '${time}', isEnabled=${isEnabled} WHERE id = '${id}';`;
+  static async update({
+    id,
+    time,
+    isEnabled,
+    isMusicEnabled,
+    areVibrationsEnabled,
+  }) {
+    const query = `UPDATE alarms SET time = '${time}', isEnabled=${isEnabled}, isMusicEnabled=${isMusicEnabled}, areVibrationsEnabled=${areVibrationsEnabled} WHERE id = '${id}';`;
     await queryDb(query);
   }
 }
