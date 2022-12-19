@@ -30,7 +30,9 @@ export default function TimeCircle({
             }
             background={rippleEffect}
           >
-            <Text style={styles.buttonText}>{el}</Text>
+            <View>
+              <Text style={styles.buttonText}>{el}</Text>
+            </View>
           </TouchableNativeFeedback>
         </View>
       ))}

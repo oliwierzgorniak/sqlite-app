@@ -2,10 +2,8 @@ export default function getAlarmData(alarmData) {
   return {
     ...alarmData,
     days: [0, 0, 0, 0, 0, 0, 0],
-    isMusicEnabled: 0,
-    areVibrationsEnabled: 0,
-    isCollapsed: true,
-    isCollapsedForStyles: true,
+    isCollapsed: 1,
+    isCollapsedForStyles: 1,
     isToggleButtonBlocked: 0,
   };
 }

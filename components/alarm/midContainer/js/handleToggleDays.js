@@ -1,11 +1,6 @@
 import { Animated } from "react-native";
 import store from "../../../../redux/store";
-import {
-  toggleCollapseInAlarm,
-  toggleCollapseForStylesInAlarm,
-  toggleIsToggleButtonBlocked,
-  toggleValue,
-} from "../../../../redux/reducers/alarmsReducer";
+import { toggleValue } from "../../../../redux/reducers/alarmsReducer";
 import getAlarmFromStore from "../../../../js/getAlarmFromStore";
 
 export default function handleToggleDays(height, alarmId) {

@@ -46,4 +46,5 @@ class Background {
   }
 }
 
-export default background = new Background();
+// BACKGROUND
+// export default background = new Background();

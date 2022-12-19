@@ -1,16 +1,19 @@
-import { Text, TouchableOpacity } from "react-native";
+import { Text, TouchableNativeFeedback, View } from "react-native";
 import styles from "./styles";
 
 import AppIconSvg from "../../assets/app-icon.svg";
+import { rippleEffect } from "../../js/global";
 
 export default ({ navigation }) => {
   return (
-    <TouchableOpacity
+    <TouchableNativeFeedback
+      background={rippleEffect}
       onPress={() => navigation.navigate("Alarms")}
-      style={styles.container}
     >
-      <Text style={styles.title}>Sqlite App 2</Text>
-      <AppIconSvg width={styles.icon.width} height={styles.icon.height} />
-    </TouchableOpacity>
+      <View style={styles.container}>
+        <Text style={styles.title}>Sqlite App 2</Text>
+        <AppIconSvg width={styles.icon.width} height={styles.icon.height} />
+      </View>
+    </TouchableNativeFeedback>
   );
 };

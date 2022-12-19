@@ -1,9 +1,4 @@
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  TouchableNativeFeedback,
-} from "react-native";
+import { View, Text, TouchableNativeFeedback } from "react-native";
 
 import { useSelector } from "react-redux";
 import handleButton from "./js/handleButton";
@@ -14,9 +9,12 @@ import TimeSelection from "../../components/timeSelection/TimeSelection";
 import { rippleEffect } from "../../js/global";
 import handlePressHours from "./js/handlePressHours";
 import handlePressMinutes from "./js/handlePressMinutes";
+import colors from "../../styles/colors";
 
 export default ({ navigation }) => {
-  const { hours, minutes } = useSelector((state) => state.timeSelection.value);
+  const { hours, minutes, isHoursMode } = useSelector(
+    (state) => state.timeSelection.value
+  );
 
   return (
     <View style={styles.container}>
@@ -25,23 +23,44 @@ export default ({ navigation }) => {
           onPress={handlePressHours}
           background={rippleEffect}
         >
-          <Text style={styles.time}>{hours}</Text>
+          <View>
+            <Text
+              style={{
+                ...styles.time,
+                color: isHoursMode ? colors.teal : colors.black,
+              }}
+            >
+              {hours}
+            </Text>
+          </View>
         </TouchableNativeFeedback>
         <Text style={styles.time}>:</Text>
         <TouchableNativeFeedback
           onPress={handlePressMinutes}
           background={rippleEffect}
         >
-          <Text style={styles.time}>{minutes}</Text>
+          <View>
+            <Text
+              style={{
+                ...styles.time,
+                color: isHoursMode ? colors.black : colors.teal,
+              }}
+            >
+              {minutes}
+            </Text>
+          </View>
         </TouchableNativeFeedback>
       </View>
       <TimeSelection />
-      <TouchableOpacity
+      <TouchableNativeFeedback
+        background={rippleEffect}
         onPress={() => handleButton(`${hours}:${minutes}`, navigation.goBack)}
         style={styles.addButton}
       >
-        <PlusSvg width={styles.icon.width} height={styles.icon.height} />
-      </TouchableOpacity>
+        <View>
+          <PlusSvg width={styles.icon.width} height={styles.icon.height} />
+        </View>
+      </TouchableNativeFeedback>
     </View>
   );
 };
