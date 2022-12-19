@@ -1,13 +1,22 @@
-import { useEffect } from "react";
-import { View, ScrollView } from "react-native";
+import { useEffect, useState } from "react";
+import { View, ScrollView, Text } from "react-native";
 
 import { useSelector } from "react-redux";
 
 import Alarm from "../../components/alarm/Alarm";
 import TopButtons from "../../components/topButtons/TopButtons";
+import Background from "./js/background/Background";
 import getAndSetAlarms from "./js/getAndSetAlarms";
 
 import styles from "./styles";
+
+async function defineTask() {
+  await Background.handleLoadingSound();
+  Background.defineTask();
+  await Background.registerTask();
+}
+
+defineTask();
 
 export default ({ navigation }) => {
   const alarms = useSelector((state) => state.alarms.value);

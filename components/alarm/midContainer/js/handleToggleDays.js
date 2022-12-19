@@ -6,13 +6,10 @@ import {
   toggleIsToggleButtonBlocked,
   toggleValue,
 } from "../../../../redux/reducers/alarmsReducer";
+import getAlarmFromStore from "../../../../js/getAlarmFromStore";
 
 export default function handleToggleDays(height, alarmId) {
-  const state = store.getState();
-  const alarms = state.alarms.value;
-  const { isCollapsed, isToggleButtonBlocked } = alarms.find(
-    (a) => a.id === alarmId
-  );
+  const { isCollapsed, isToggleButtonBlocked } = getAlarmFromStore(alarmId);
 
   if (isToggleButtonBlocked) return;
   store.dispatch(toggleValue(alarmId, "isToggleButtonBlocked"));

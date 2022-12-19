@@ -1,5 +1,5 @@
 import * as SQLite from "expo-sqlite";
-const db = SQLite.openDatabase("./zgorniak_oliwier_4i1b.db");
+const db = SQLite.openDatabase("./ZGORNIAK_OLIWIER_4I1B.db");
 
 async function queryDb(query) {
   return new Promise((resolve, reject) => {
@@ -17,7 +17,7 @@ async function queryDb(query) {
 export default class Database {
   static async createTable() {
     const query =
-      "CREATE TABLE IF NOT EXISTS alarms (id integer primary key not null, time text, isEnabled integer, isMusicEnabled integer, areVibrations integer);";
+      "CREATE TABLE IF NOT EXISTS alarms (id integer primary key not null, time text, isEnabled integer, isMusicEnabled integer, areVibrationsEnabled integer);";
     await queryDb(query);
   }
 
